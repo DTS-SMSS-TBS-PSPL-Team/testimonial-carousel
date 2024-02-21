@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TS.Models.AdminProfile>
+@{
+    ViewData["Title"] = "ApprovedTestimonials";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Approved Testimonials</h1>
+
+<div class="col-lg-6">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Approved Testimonials</h5>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">@Html.DisplayNameFor(model => model.ApplicantTestimonial.Testimonial)</th>
+                            <th scope="col">@Html.DisplayNameFor(model => model.ApplicantTestimonial.Description)</th>
+                            <th scope="col">@Html.DisplayNameFor(model => model.ApplicantTestimonial.IsApprove)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            if (item.IsApproved == true)
+                            {
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>@Html.DisplayFor(modelItem => item.ApplicantTestimonial.Testimonial)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.ApplicantTestimonial.Description)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.ApplicantTestimonial.IsApprove)</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    No Testimonials available
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

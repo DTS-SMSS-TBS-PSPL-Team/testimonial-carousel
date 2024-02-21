@@ -1,0 +1,93 @@
+﻿@model TS.Models.ApplicantTestimonial
+ 
+
+@{
+    ViewData["Title"] = "AddTestimonial";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>AddTestimonial</h1>
+
+<hr />
+
+
+<body>
+    
+    <div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="bg-dark col-auto col-md-4 col-lg-3 min-vh-30 d-flex flex-column justify-content">
+            <div class="bg-dark p-2">
+                    <a class="d-flex text-decoration-none mt-1 align-items-center text-white">
+                        <span class="fs-4 d-none d-sm-inline">Sidemenu</span>
+                        </a>
+                    <ul class="nav nav-pills flex-column mt-4">
+                        <li class="nav-item py-2 py-sm-0">
+                            <a class="nav-link text-white" aria-current="page">
+                                <i class="fs-5 fa fa-house"><span class="fs-4 ms-3 d-none d-sm-inline">Home</span></i>
+                            </a>
+                         </li>
+                        <li class="nav-item py-2 py-sm-0">
+                            <a class="nav-link text-white" aria-current="page">
+                                <i class="fs-5 fa fa-guage"><span class="fs-4 ms-3 d-none d-sm-inline">MyProfile</span></i>
+                            </a>
+                          </li>
+                          <li class="nav-item py-2 py-sm-0">
+                            <a class="nav-link text-white" aria-current="page">
+                                <i class="fs-5 fa fa-guage"><span class="fs-4 ms-3 d-none d-sm-inline">Edit</span></i>
+                            </a>
+                          </li>
+                    </ul>
+            </div>
+        </div>
+            @if ((Model.Testimonial == null && Model.Description == null))
+            {
+                <form enctype="" asp-controller="ApplicantProfile" asp-action="AddTestimonial" method="post">
+                    <div class="row mb-3">
+                    <label for="Testimonial" class="col-sm-2 col-form-label">Testimonial</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="Testimonial" value="@Model.Testimonial" class="form-control" id="Testimonial" required>
+                    </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="Description" class="col-sm-2 col-form-label">Description</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="Description" value="@Model.Description" name="Description" required></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </form>
+            }
+            else
+            {
+            <!--Testimonial List-->
+            <div class="">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Testimonial</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            @* <td>@Model.ApplicantProfile.RegisteredUser.FirstName</td> *@
+                            <td>@Model.ApplicantProfileId</td>
+                            <td>@Model.Testimonial</td>
+                            <td>@Model.Description</td>
+                            <td>@Model.IsApprove</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            }
+        </div>
+    </div>  
+
+</body>
+@* 
+<div>
+    <a asp-action="Index">Back to List</a>
+</div> *@

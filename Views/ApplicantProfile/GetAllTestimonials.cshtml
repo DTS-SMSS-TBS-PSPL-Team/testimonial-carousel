@@ -1,0 +1,199 @@
+﻿@* @model List<TS.Models.ApplicantTestimonial> *@
+@model  IEnumerable<TS.Models.AdminProfile>
+@{
+    ViewData["Title"] = "GetAllTestimonials";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+   
+
+</head>
+<h1>GetAllTestimonials</h1>
+
+
+
+<body>
+<div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Hover Table</h5>
+			  <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                            <th scope="col">@Html.DisplayNameFor(model => model.ApplicantTestimonial.Testimonial)</th>
+                            <th scope="col">@Html.DisplayNameFor(model => model.ApplicantTestimonial.Description)</th>
+                            <th scope="col">@Html.DisplayNameFor(model => model.ApplicantTestimonial.IsApprove)</th>
+                  </tr>
+                </thead>
+                        
+                <tbody>
+                    @foreach (var item in Model)
+                            {
+                                @using (Html.BeginForm("GetApproval", "ApplicantProfile", new { id = item.ApplicantTestimonial.ApplicantProfileId, isapprove = item.ApplicantTestimonial.IsApprove }))
+                                {
+                                    @* <input type="hidden" name="AppId" value="@item.ApplicantTestimonial.ApplicantProfileId" class="ApproveId" />
+                                    <input type="hidden" name="IsApprove" value="@item.ApplicantTestimonial.IsApprove.ToString()" class="IsApprove" /> *@
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>@Html.DisplayFor(modelItem => item.ApplicantTestimonial.Testimonial)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.ApplicantTestimonial.Description)</td>
+                                        @if(item.ApplicantTestimonial.IsApprove==false)
+                                        {
+                                            <td><button type="submit" class="btn btn-primary approvebtn">Approve</button></td>
+                                        }
+                                        else
+                                        {
+                                            <td><button type="submit" disabled class="btn btn-primary approvebtn">Approved</button></td>
+                                        }
+                                    </tr>
+                                }
+                               
+                                    if (ViewBag.SuccessMessage != null)
+                                    {
+                                        <div>
+                                            @ViewBag.SuccessMessage
+                                        </div>
+                                    }
+                            }
+                        </tbody>
+                    </table>
+                        
+                </div>
+            </div>
+                    @* @foreach (var item in Model)
+                    {
+                        var prevDisabled = !item.testimonials.HasPreviousPage ? "disabled" : "";
+                        var nextDisabled = !item.testimonials.HasNextPage ? "disabled" : "";
+                    
+                        <nav aria-label="...">
+                            <ul class="pagination">
+                    <li class="page-item @prevDisabled">
+                            <a class="page-link" href="#" pageNumber="@(item.testimonials.PageIndex-1)" pageSize="@(item.testimonials.TotalPages-1)" tabindex="-1" aria-disabled="true">Previous
+                            </a>
+                    </li>
+                            @for(int i=1; i <= item.testimonials.TotalPages;i++)
+                            {
+                                if (i == item.testimonials.PageIndex)
+                                {
+                                    <li class="page-item"><a class="page-link" pageNumber="@i" pageSize="@(item.testimonials.TotalPages)" href="#">@i</a></li>
+                                }
+                                else
+                                {
+
+
+                                    <li class="page-item active" aria-current="page">
+                                        <a class="page-link" pageNumber="@i" pageSize="@(item.testimonials.TotalPages)" href="#">@i</a>
+                                </li>
+                            }
+                                if (i > 10)
+                                {
+                                    <li class="page-item">...</li>
+                                    break;
+                                }
+                            }
+
+                    <li class="page-item">
+                            <a class="page-link" @nextDisabled href="#" pageNumber="@(item.testimonials.PageIndex + 1)" pageSize="@(item.testimonials.TotalPages)">Next</a>
+                    </li>
+                            </ul>
+                        </nav>
+              }
+ *@            
+          </div>
+        </div>
+
+
+        <script>
+            let paginationBox=document.querySelector()
+        </script>
+
+
+
+
+
+
+
+       @*  <script type="text/javascript">
+            jQuery(document).ready(function () {
+
+                $("#approvebtn").click(function () {
+                    debugger;
+                    var result = $("#IsApprove").val();//true
+                    var id = item.ApplicantTestimonial.id;
+                    window.location.href = "/{ApplicantProfile}/{GetApproval}/{result,id}";
+                });
+
+            })(jQuery);
+        </script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script> *@
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+@*
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p> 
+@* <table class="table">
+    <thead>
+        <tr>
+            <th scope="col">
+                Testimonial
+                @* @Html.DisplayNameFor(model => model.Testimonial) 
+            </th>
+            <th>
+                Description
+                @* @Html.DisplayNameFor(model => model.Description) 
+            </th>
+            <th>
+                IsApprove
+                
+            @Html.DisplayNameFor(model => model.IsApprove) 
+            </th>
+            @* <th>
+                @Html.DisplayNameFor(model => model.ApplicantProfile)
+            </th> 
+            <th></th>
+        </tr>
+    </thead>
+    @*
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                    @Html.DisplayFor(modelItem => item.ApplicantTestimonial.Testimonial)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.ApplicantTestimonial.Description)
+            </td>
+            <td>
+                    <input type="checkbox" class="form-check" checked data-toggle="toggle" data-style="ios">
+                @item.IsApproved
+                </td>
+           <td>
+                @Html.DisplayFor(modelItem => item.ApplicantProfile.JobProfession)
+            </td> 
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-controller="ApplicantProfile" asp-route-id="@item.ApplicantTestimonial.Id">Details</a> |
+                    <a asp-action="Delete" asp-action="ApplicantProfile" asp-route-id="@item.ApplicantTestimonial.Id">Delete</a>
+            </td>
+        </tr>
+}
+
+    </tbody>
+</table> 
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script> *@

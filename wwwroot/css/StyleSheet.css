@@ -1,0 +1,61 @@
+﻿body {
+    background:grey !important;
+}
+
+.carousel{
+    height:100vh;
+    perspective:250px;
+}
+
+.carousel .carousel-item{
+    width:450px;
+    display:block;
+}
+
+.cards{
+    position:relative;
+    margin:0.5rem 0 1rem 0;
+    background-color:#fff;
+    width:450px;
+    height:379px;
+    color:#262626;
+    border-radius:100px;
+    box-shadow:0 8px 20px 0 rgba(0,0,0,0.2);
+
+
+}
+
+.img-area img{
+    border-radius:50%;
+    border: 7px solid;
+    margin-top:-80px;
+}
+
+.box1{
+    background:#005bae;
+    height:120px;
+    border-radius:25px 25px 0 0;
+}
+
+.img-area{
+    text-align:center;
+}
+
+.main-text{
+    padding:5px 0;
+    text-align:center;
+}
+
+.main-text h2{
+    font-weight:900;
+    font-size:20px;
+    margin:0 0 20px;
+    font-family:alfa slab one;
+}
+
+.main-text p {
+    font-size: 16px;
+    padding: 0 35px;
+    overflow-y: hidden;
+    text-overflow: ellipsis;
+}

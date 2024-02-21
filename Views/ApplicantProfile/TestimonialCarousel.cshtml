@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "TestimonialCarousel";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@model IEnumerable<TS.Models.AdminProfile>
+    <h1>Testimonial Carousel</h1>
+
+      <div class="profile">
+        <div class="carousel">
+            @foreach (var carousels in Model)
+                
+            {
+
+                    <a class="carousel-item">
+                            <div class="cards">
+                                <div class="box1">
+                                    <div class="img-area">
+                                        <img src="~/images/@carousels.CarouselSlider.CSImage" />
+                                    </div>
+                                    <div class="main-text">
+                                        <h2>@carousels.CarouselSlider.Heading_Content</h2>
+                                         <p>@carousels.CarouselSlider.Content_Caption</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+        }
+        </div>
+      </div>
+
+
